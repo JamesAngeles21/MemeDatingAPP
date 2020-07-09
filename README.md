@@ -11,7 +11,7 @@ git clone https://github.com/JamesAngeles21/MemeDatingAPP.git
 Then navigate to the project folder and create a virtual environment in order to isolate package dependencies locally
 
 ```bash
-python3 -m venv env 
+python3 -m venv env
 source env/bin/activate # Use env\Scripts\activate for windows
 ```
 
@@ -20,6 +20,7 @@ Install all necessary libraries and modules (i.e)
 pip3 install django
 pip3 install djangorestframework
 brew install mysql
+pip install pymysql
 ```
 
 Create a local database using MySQL Workbench and adjust database settings in green_tea_dating/settings.py accordingly
@@ -43,7 +44,7 @@ There are two ways to test your code:
 1. Manually Send HTTP requests to server using Postman and verify all actions are correct
 2. Write Python tests in the appropriate tests.py file (refer to [this](https://www.django-rest-framework.org/api-guide/testing/))
 
-To manually send HTTP Requests: 
+To manually send HTTP Requests:
 - Change the HTTP Request type to the desired one (i.e POST, GET)
 - Input the url route that you want
 - If sending a POST request, make sure to put data in the raw body similar to
@@ -57,4 +58,4 @@ To manually send HTTP Requests:
 	"occupation": "swe",
 	"birthday": "1998-10-21"
 }
-``` 
+```
