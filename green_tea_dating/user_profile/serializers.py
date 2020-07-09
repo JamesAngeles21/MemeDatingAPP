@@ -12,15 +12,13 @@ class ProfileSerializer(serializers.ModelSerializer):
 		fields = ('credentials', 'created_at', 'bio', 'occupation', 'birthday', 'twitter_handle', 'ig_handle')
 
 	def update(self, instance, validated_data):
-		user = validated_data.pop('credentials', None)
-		self.update_user(user)
+		instance.bio = validated_data.get('bio', instance.bio)
+		instance.occupation = validated_data.get('occupation', instance.occupation)
+		instance.twitter_handle = validated_data.get('twitter_handle', instance.twitter_handle)
+		instance.ig_handle= validated_data.get('ig_handle', instance.ig_handle)
+
 		instance.save()
 		return instance
-
-	def update_user(self, user_data):
-		user = get_user_model().objects(username=user_data['username'])
-		UserSerializer.update(user, user_data)
-
 
 	def create(self, validated_data):
 		user = validated_data.pop('credentials', None)
@@ -28,9 +26,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 		if not user:
 			raise serializers.ValidationError(INVALID_DATA_ERR)
 
-		if get_user_model().user_exists(user['email']):
+		if get_user_model().user_exists(user['username']):
 			raise serializers.ValidationError(OBJECT_ALREADY_EXISTS_ERR) 
 
 		validated_data['credentials'] = get_user_model().createUser(user)
 		profile = UserProfile.objects.create(**validated_data)
+		profile.save()
 		return profile

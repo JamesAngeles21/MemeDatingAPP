@@ -14,13 +14,10 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 	permission_classes = (permissions.AllowAny,)
 
 
-	@action(detail=False, methods=['get'])
-	def get_profile(self, request, *args, **kwargs):
-		profile = UserProfile.objects.get(pk=request.user.email)
-		serializer = ProfileSerializer(profile).data
-		if not serializer.is_valid():
-			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-		return Response(serializer,status=status.HTTP_200_OK)
+	def retrieve(self, request, pk=None):
+		profile = get_object_or_404(UserProfile, pk=pk)
+		serializer = ProfileSerializer(profile)
+		return Response(serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request, *args, **kwargs):
 		serializer = ProfileSerializer(data=request.data)
@@ -30,10 +27,19 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 		serializer.save()
 		return Response(serializer.data, status=status.HTTP_201_CREATED)
 
+	def partial_update(self, request, pk=None, *args, **kwargs):
+		profile = get_object_or_404(UserProfile, pk=pk) 
+		serializer = ProfileSerializer(profile, request.data, partial=True)
+		if not serializer.is_valid():
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+		serializer.save()
+		return Response(serializer.data, status=status.HTTP_200_OK)
+
 	@action(detail=False, methods=['delete'])
 	def delete(self, request,*args, **kwargs):
-		profile = get_object_or_404(UserProfile, pk=request.data['email']) 
-		user = get_user_model().objects.get(email=profile.credentials.email)
+		profile = get_object_or_404(UserProfile, pk=request.data['username']) 
+		user = get_user_model().objects.get(username=profile.credentials.username)
 		user.delete()
 		self.perform_destroy(profile)
 		return Response(status=status.HTTP_204_NO_CONTENT)
