@@ -35,6 +35,7 @@ This should have the local server running from terminal
 ## Usage
 In order to add a new table, one must implement Django [Models](https://docs.djangoproject.com/en/3.0/topics/db/models/), [Serializers](https://www.django-rest-framework.org/api-guide/serializers/), and [Viewsets](https://www.django-rest-framework.org/api-guide/viewsets/)
 Run the same migration commands above and check on MySQL Workbench to verify that tables were created correctly
+Make sure to also add the viewset to the urls.py file in the green_tea_dating folder
 
 ## Testing
 There are two ways to test your code:
@@ -42,4 +43,18 @@ There are two ways to test your code:
 1. Manually Send HTTP requests to server using Postman and verify all actions are correct
 2. Write Python tests in the appropriate tests.py file (refer to [this](https://www.django-rest-framework.org/api-guide/testing/))
 
-(Show examples for both) 
+To manually send HTTP Requests: 
+- Change the HTTP Request type to the desired one (i.e POST, GET)
+- Input the url route that you want
+- If sending a POST request, make sure to put data in the raw body similar to
+```javascript
+{
+	"credentials": {
+		"email": "test@test.com",
+		"password": "j"
+	},
+	"bio": "hello",
+	"occupation": "swe",
+	"birthday": "1998-10-21"
+}
+``` 
