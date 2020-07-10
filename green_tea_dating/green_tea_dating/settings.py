@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'user_profile.apps.UserProfileConfig',
     'matches.apps.MatchesConfig',
     'users.apps.UsersConfig',
+    'content.apps.ContentConfig'
 ]
 
 MIDDLEWARE = [

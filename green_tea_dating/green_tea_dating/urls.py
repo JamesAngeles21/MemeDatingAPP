@@ -19,9 +19,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 from user_profile.views import UserProfileViewSet
+from content.views import ContentViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
 router.register(r'profile', UserProfileViewSet, basename='profile')
+router.register(r'content', ContentViewSet, basename='content')
 
 urlpatterns = [
 	path('', include(router.urls)),
