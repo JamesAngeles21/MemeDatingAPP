@@ -36,9 +36,8 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 		serializer.save()
 		return Response(serializer.data, status=status.HTTP_200_OK)
 
-	@action(detail=False, methods=['delete'])
-	def delete(self, request,*args, **kwargs):
-		profile = get_object_or_404(UserProfile, pk=request.data['username']) 
+	def destroy(self, request, pk=None, *args, **kwargs):
+		profile = get_object_or_404(UserProfile, pk=pk)
 		user = get_user_model().objects.get(username=profile.credentials.username)
 		user.delete()
 		self.perform_destroy(profile)
