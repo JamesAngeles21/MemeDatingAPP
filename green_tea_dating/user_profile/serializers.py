@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from users.serializers import UserSerializer
 from user_profile.models import UserProfile
-from ErrorMessages import INVALID_DATA_ERR, OBJECT_ALREADY_EXISTS_ERR 
+from ErrorMessages import INVALID_DATA_ERR, OBJECT_ALREADY_EXISTS_ERR
 
 class ProfileSerializer(serializers.ModelSerializer):
 	credentials = UserSerializer(required=True)
@@ -27,7 +27,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 			raise serializers.ValidationError(INVALID_DATA_ERR)
 
 		if get_user_model().user_exists(user['username']):
-			raise serializers.ValidationError(OBJECT_ALREADY_EXISTS_ERR) 
+			raise serializers.ValidationError(OBJECT_ALREADY_EXISTS_ERR)
 
 		validated_data['credentials'] = get_user_model().createUser(user)
 		profile = UserProfile.objects.create(**validated_data)

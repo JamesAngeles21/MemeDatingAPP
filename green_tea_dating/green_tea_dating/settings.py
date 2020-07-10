@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'users.CustomUser'
 
 INSTALLED_APPS = [
+    'conversations.apps.ConversationsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -85,9 +86,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'greenteadating',
         'USER': 'root',
-        'PASSWORD': 'SP@ng3b0b',
+        'PASSWORD': 'stevenkuang1',
         'HOST': '127.0.0.1',
-        'PORT': '3306', 
+        'PORT': '3306',
     }
 }
 
