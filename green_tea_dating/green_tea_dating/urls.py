@@ -20,10 +20,12 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from user_profile.views import UserProfileViewSet
 from content.views import ContentViewSet
+from swipes.views import SwipeViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
 router.register(r'profile', UserProfileViewSet, basename='profile')
 router.register(r'content', ContentViewSet, basename='content')
+router.register(r'swipe', SwipeViewSet, basename='swipe')
 
 urlpatterns = [
 	path('', include(router.urls)),

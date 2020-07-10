@@ -6,6 +6,8 @@ TEST_PASSWORD= 't'
 TEST_FIRST = 'Tester'
 TEST_LAST = 'Testing'
 
+BATCH_CREATE_URL = 'batch_create/'
+
 PROFILE_BASE_URL = '/profile/'
 PROFILE_USERNAME_URL = PROFILE_BASE_URL + TEST_USERNAME + "/"
 
@@ -40,7 +42,7 @@ CONTENT_DELETE_URL = CONTENT_BASE_URL + 'delete/'
 CONTENT_BATCH_DELETE_URL = CONTENT_BASE_URL + 'batch_delete/'
 
 
-TEST_CONTENT_URL_1 = 'http://hello.com'
+TEST_CONTENT_URL_1 = 'https://hello.com'
 TEST_CONTENT_URL_2 = 'https://hello1.com'
 TEST_CONTENT_URL_3 = 'https://hello2.com'
 TEST_CONTENT_URL_4 = 'https://hello3.com'
@@ -51,5 +53,33 @@ TEST_BATCH_URLS = {
 		TEST_CONTENT_URL_2,
 		TEST_CONTENT_URL_3,
 		TEST_CONTENT_URL_4
+	]
+}
+
+# Swipe Test Constants
+
+SWIPE_BASE_URL = '/swipe/'
+
+SINGLE_SWIPE = {
+	'profile': TEST_USERNAME,
+	'content': TEST_CONTENT_URL_1,
+	'liked': True
+}
+
+MULTIPLE_SWIPES = {
+	'profile': TEST_USERNAME,
+	'swiped_content': [
+		{
+			'content': TEST_CONTENT_URL_1,
+			'liked': True
+		},
+		{
+			'content': TEST_CONTENT_URL_2,
+			'liked': True
+		},
+		{
+			'content': TEST_CONTENT_URL_3,
+			'liked': False
+		}
 	]
 }
