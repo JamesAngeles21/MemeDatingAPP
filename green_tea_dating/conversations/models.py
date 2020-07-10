@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 
 # Create your models here.
 class Conversations(models.Model):
-    id = models.AutoField(primary_key=True)
     time_written = models.DateTimeField(auto_now_add=True)
     message = models.CharField(max_length=280)
     username1 = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='sender', default='sender')
