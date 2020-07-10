@@ -6,7 +6,7 @@ class ContentSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Content 
-		fields = ('id', 'path')
+		fields = ('path',)
 
 	def create(self, validated_data):
 		content = Content.objects.create(**validated_data)

@@ -2,7 +2,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APITestCase
 from content.models import Content
-from TestConstants import CONTENT_BASE_URL, TEST_BATCH_URLS, TEST_CONTENT_URL_1, CONTENT_DELETE_URL, CONTENT_BATCH_DELETE_URL
+from TestConstants import CONTENT_BASE_URL, TEST_BATCH_URLS, TEST_CONTENT_URL_1, CONTENT_DELETE_URL, CONTENT_BATCH_DELETE_URL, BATCH_CREATE_URL
 
 # Create your tests here.
 class ContentTests(APITestCase):
@@ -16,7 +16,7 @@ class ContentTests(APITestCase):
 		self.assertEqual(content.path, TEST_CONTENT_URL_1)
 
 	def test_batch_create(self):
-		response = self.client.post(CONTENT_BASE_URL + 'batch_create/', TEST_BATCH_URLS, format='json')
+		response = self.client.post(CONTENT_BASE_URL + BATCH_CREATE_URL, TEST_BATCH_URLS, format='json')
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 		self.assertEqual(Content.objects.count(), len(TEST_BATCH_URLS['urls']))
 
