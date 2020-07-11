@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'matches.apps.MatchesConfig',
     'users.apps.UsersConfig',
     'content.apps.ContentConfig',
-    'swipes.apps.SwipesConfig'
+    'swipes.apps.SwipesConfig',
     'conversations.apps.ConversationsConfig',
 
 ]

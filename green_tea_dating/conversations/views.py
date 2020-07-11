@@ -8,13 +8,13 @@ from django.contrib.auth import get_user_model
 
 # Create your views here.
 class ConversationsViewSet(viewsets.ModelViewSet):
-    queryset = Conversations.objects.all()
+	queryset = Conversations.objects.all()
 	serializer_class = ConversationsSerializer
-	#permission_classes = (permissions.AllowAny,)
+	permission_classes = (permissions.AllowAny,)
 
 	def retrieve(self, request, username1, username2):
 		conversationMessages = get_list_or_404(Conversations, username1=username1, username2=username2) | get_list_or_404(Conversations, username1=username2, username2=username1)
-        serializer = ConversationsSerializer(conversationMessages, many=True)
+		serializer = ConversationsSerializer(conversationMessages, many=True)
 		return Response(serializer.data, status=status.HTTP_200_OK)
 
 	def create(self, request, *args, **kwargs):

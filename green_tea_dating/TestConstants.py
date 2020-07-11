@@ -1,10 +1,16 @@
-# User Profile Test Constants 
+# User Profile Test Constants
 
 TEST_USERNAME = 'test'
 TEST_EMAIL = 't@t.com'
 TEST_PASSWORD= 't'
 TEST_FIRST = 'Tester'
 TEST_LAST = 'Testing'
+
+TEST_USERNAME2 = 'result'
+TEST_EMAIL2 = 'r@r.com'
+TEST_PASSWORD2 = 'r'
+TEST_FIRST2 = 'Resulter'
+TEST_LAST2 = 'Resulting'
 
 BATCH_CREATE_URL = 'batch_create/'
 
@@ -16,11 +22,26 @@ TEST_CREDENTIALS = {
 	'email': TEST_EMAIL,
 	'password': TEST_PASSWORD,
 	'first_name': TEST_FIRST,
-	'last_name': TEST_LAST 
+	'last_name': TEST_LAST
+}
+
+TEST_CREDENTIALS2 = {
+	'username': TEST_USERNAME2,
+	'email': TEST_EMAIL2,
+	'password': TEST_PASSWORD2,
+	'first_name': TEST_FIRST2,
+	'last_name': TEST_LAST2
 }
 
 TEST_ACCOUNT = {
-	'credentials': TEST_CREDENTIALS, 
+	'credentials': TEST_CREDENTIALS,
+	"bio": "hello",
+	"occupation": "swe",
+	"birthday": "1998-10-21"
+}
+
+TEST_ACCOUNT2 = {
+	'credentials': TEST_CREDENTIALS2,
 	"bio": "hello",
 	"occupation": "swe",
 	"birthday": "1998-10-21"
@@ -82,4 +103,20 @@ MULTIPLE_SWIPES = {
 			'liked': False
 		}
 	]
+}
+
+# Conversation Test Constants
+
+CONVERSATION_BASE_URL = '/conversations/'
+
+TEST_CONVERSATION = {
+	"message": "hello this is a test message!",
+	"username1": TEST_USERNAME,
+	"username2": TEST_USERNAME2
+}
+
+TEST_CONVERSATION2 = {
+	"message": "wow! I got the message!",
+	"username1": TEST_USERNAME2,
+	"username2": TEST_USERNAME
 }
