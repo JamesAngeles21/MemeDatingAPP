@@ -28,6 +28,8 @@ class ConversationsTests(APITestCase):
         self.assertMessageInfoIsCorrect(response, TEST_CONVERSATION2)
 
     def assertMessageInfoIsCorrect(self, actual, expected):
+        user1 = get_user_model().objects.get(username=actual.username1)
+        self.assertEqual(user1.username, expected['username1'])
+        user2 = get_user_model().objects.get(username=actual.username2)
+        self.assertEqual(user2.username, expected['username2'])
         self.assertEqual(actual.message, expected['message'])
-        # for attribute in expected:
-        #     self.assertEqual(getattr(actual, attribute), expected[attribute])
