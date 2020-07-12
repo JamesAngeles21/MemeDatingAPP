@@ -22,11 +22,13 @@ from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh
 from user_profile.views import UserProfileViewSet
 from content.views import ContentViewSet
 from swipes.views import SwipeViewSet
+from conversations.views import ConversationsViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
 router.register(r'profile', UserProfileViewSet, basename='profile')
 router.register(r'content', ContentViewSet, basename='content')
 router.register(r'swipe', SwipeViewSet, basename='swipe')
+router.register(r'conversations', ConversationsViewSet, basename='conversations')
 
 urlpatterns = [
 	path('', include(router.urls)),
