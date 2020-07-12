@@ -18,6 +18,8 @@ class AccountTests(APITestCase):
 	def test_delete_account(self):
 		response = self.client.post(PROFILE_BASE_URL, TEST_ACCOUNT, format='json')
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+		user =	get_user_model().objects.get(pk=TEST_CREDENTIALS['username'])
+		self.client.force_authenticate(user=user) 
 
 		response = self.client.delete(PROFILE_USERNAME_URL, format='json')
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
@@ -26,6 +28,8 @@ class AccountTests(APITestCase):
 	def test_update_account(self):
 		response = self.client.post(PROFILE_BASE_URL, TEST_ACCOUNT, format='json')
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+		user = get_user_model().objects.get(pk=TEST_CREDENTIALS['username'])
+		self.client.force_authenticate(user=user)
 
 		response = self.client.patch(PROFILE_USERNAME_URL, TEST_UPDATE_BODY, format='json')
 		self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -41,7 +45,10 @@ class AccountTests(APITestCase):
 		response = self.client.post(PROFILE_BASE_URL, TEST_ACCOUNT, format='json')
 		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
-
+	def test_unauth_request(self):
+		self.client.post(PROFILE_BASE_URL, TEST_ACCOUNT, format= 'json')
+		response = self.client.patch(PROFILE_USERNAME_URL, TEST_UPDATE_BODY, format='json')
+		self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
 	def assertAccountInfoIsCorrect(self,actual, expected):
 		user = get_user_model().objects.get(username=actual.credentials.username)

@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token, verify_jwt_token, refresh_jwt_token 
 from user_profile.views import UserProfileViewSet
 from content.views import ContentViewSet
 from swipes.views import SwipeViewSet
@@ -29,4 +30,7 @@ router.register(r'swipe', SwipeViewSet, basename='swipe')
 
 urlpatterns = [
 	path('', include(router.urls)),
+	path('token-auth/', obtain_jwt_token),
+	path('token-verify/', verify_jwt_token),
+	path('token-refresh/', refresh_jwt_token),
 ]

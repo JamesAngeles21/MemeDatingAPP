@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -44,7 +45,7 @@ INSTALLED_APPS = [
     'matches.apps.MatchesConfig',
     'users.apps.UsersConfig',
     'content.apps.ContentConfig',
-    'swipes.apps.SwipesConfig'
+    'swipes.apps.SwipesConfig',
     'conversations.apps.ConversationsConfig',
 
 ]
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'greenteadating',
         'USER': 'root',
-        'PASSWORD': 'stevenkuang1',
+        'PASSWORD': 'SP@ng3b0b',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -113,6 +114,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Authentication Settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated'
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    )
+}
+
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=1800),
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

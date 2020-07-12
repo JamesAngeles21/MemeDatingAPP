@@ -61,13 +61,11 @@ TEST_BATCH_URLS = {
 SWIPE_BASE_URL = '/swipe/'
 
 SINGLE_SWIPE = {
-	'profile': TEST_USERNAME,
 	'content': TEST_CONTENT_URL_1,
 	'liked': True
 }
 
 MULTIPLE_SWIPES = {
-	'profile': TEST_USERNAME,
 	'swiped_content': [
 		{
 			'content': TEST_CONTENT_URL_1,
