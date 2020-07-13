@@ -19,6 +19,7 @@ Install all necessary libraries and modules (i.e)
 ```bash
 pip3 install django
 pip3 install djangorestframework
+pip3 install djangorestframework-jwt
 brew install mysql
 pip install pymysql
 ```
