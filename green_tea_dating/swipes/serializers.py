@@ -6,7 +6,7 @@ class SwipeSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Swipe
-		fields = ('profile', 'content', 'liked')
+		fields = ('user', 'content', 'liked')
 
 	def create(self, validated_data):
 		swipe = Swipe.objects.create(**validated_data)

@@ -19,7 +19,7 @@ class AccountTests(APITestCase):
 		response = self.client.post(PROFILE_BASE_URL, TEST_ACCOUNT, format='json')
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 		user =	get_user_model().objects.get(pk=TEST_CREDENTIALS['username'])
-		self.client.force_authenticate(user=user) 
+		self.client.force_authenticate(user=user)
 
 		response = self.client.delete(PROFILE_USERNAME_URL, format='json')
 		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
