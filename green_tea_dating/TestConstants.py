@@ -67,6 +67,8 @@ TEST_CONTENT_URL_1 = 'https://hello.com'
 TEST_CONTENT_URL_2 = 'https://hello1.com'
 TEST_CONTENT_URL_3 = 'https://hello2.com'
 TEST_CONTENT_URL_4 = 'https://hello3.com'
+TEST_CONTENT_URL_5 = 'https://hello4.com'
+TEST_CONTENT_URL_6 = 'https://hello5.com'
 
 TEST_BATCH_URLS = {
 	'urls': [
@@ -118,3 +120,30 @@ TEST_CONVERSATION2 = {
 	"username1": TEST_USERNAME2,
 	"username2": TEST_USERNAME
 }
+
+# Profile Picture Constants
+PROFILE_PICTURE_BASE_URL = '/profile_pictures/'
+GET_PROFILE_PICTURES_URL = PROFILE_PICTURE_BASE_URL + 'get_profile_pictures/'
+
+TEST_PICTURES = [
+	{
+		'path': TEST_CONTENT_URL_1,
+		'picture_number': 1
+	},
+	{
+		'path': TEST_CONTENT_URL_2,
+		'picture_number': 2
+	},
+	{
+		'path': TEST_CONTENT_URL_3,
+		'picture_number': 3
+	},
+	{
+		'path': TEST_CONTENT_URL_4,
+		'picture_number': 4
+	},
+	{
+		'path': TEST_CONTENT_URL_5,
+		'picture_number': 5 
+	}
+]
