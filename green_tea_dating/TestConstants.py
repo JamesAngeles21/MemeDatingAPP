@@ -188,3 +188,17 @@ TEST_PICTURES = [
 		'picture_number': 5
 	}
 ]
+
+# Matches Test Constants
+MATCHES_BASE_URL = '/matches/'
+MATCHES_DELETE_URL = MATCHES_BASE_URL + 'delete_match/'
+
+TEST_MATCH = {
+	'matcher': TEST_USERNAME,
+	'matched': TEST_USERNAME2
+}
+
+TEST_MATCH_REVERSE = {
+	'matcher' : TEST_USERNAME2,
+	'matched' : TEST_USERNAME
+}
