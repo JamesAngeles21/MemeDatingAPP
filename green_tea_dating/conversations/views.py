@@ -35,6 +35,8 @@ class ConversationsViewSet(viewsets.ModelViewSet):
 	#get messages between 2
 	@action(methods=['post'], detail=False)
 	def get_conversation_between_users(self, request, *args, **kwargs):
+		if (request.data['username1'] != request.user.username):
+			return Response(status=status.HTTP_400_BAD_REQUEST)
 		username1 = request.data['username1']
 		username2 = request.data['username2']
 		conversationMessages = get_list_or_404(Conversations, Q(username1=username1, username2=username2) | Q(username1=username2, username2=username1))
