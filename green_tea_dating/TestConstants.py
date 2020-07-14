@@ -12,6 +12,12 @@ TEST_PASSWORD2 = 'r'
 TEST_FIRST2 = 'Resulter'
 TEST_LAST2 = 'Resulting'
 
+TEST_USERNAME3 = 'cheater'
+TEST_EMAIL3 = 'c@c.com'
+TEST_PASSWORD3 = 'c'
+TEST_FIRST3 = 'Cheater'
+TEST_LAST3 = 'Cheating'
+
 BATCH_CREATE_URL = 'batch_create/'
 
 PROFILE_BASE_URL = '/profile/'
@@ -33,6 +39,14 @@ TEST_CREDENTIALS2 = {
 	'last_name': TEST_LAST2
 }
 
+TEST_CREDENTIALS3 = {
+	'username': TEST_USERNAME3,
+	'email': TEST_EMAIL3,
+	'password': TEST_PASSWORD3,
+	'first_name': TEST_FIRST3,
+	'last_name': TEST_LAST3
+}
+
 TEST_ACCOUNT = {
 	'credentials': TEST_CREDENTIALS,
 	"bio": "hello",
@@ -42,6 +56,13 @@ TEST_ACCOUNT = {
 
 TEST_ACCOUNT2 = {
 	'credentials': TEST_CREDENTIALS2,
+	"bio": "hello",
+	"occupation": "swe",
+	"birthday": "1998-10-21"
+}
+
+TEST_ACCOUNT3 = {
+	'credentials': TEST_CREDENTIALS3,
 	"bio": "hello",
 	"occupation": "swe",
 	"birthday": "1998-10-21"
@@ -108,6 +129,9 @@ MULTIPLE_SWIPES = {
 # Conversation Test Constants
 
 CONVERSATION_BASE_URL = '/conversations/'
+CONVERSATION_USERNAME_URL = CONVERSATION_BASE_URL + TEST_USERNAME + "/"
+CONVERSATION_BETWEEN_USER_URL = CONVERSATION_BASE_URL + 'get_conversation_between_users/'
+CONVERSATION_BATCH_GET_URL = CONVERSATION_BASE_URL + '/batch_get/'
 
 TEST_CONVERSATION = {
 	"message": "hello this is a test message!",
@@ -119,6 +143,23 @@ TEST_CONVERSATION2 = {
 	"message": "wow! I got the message!",
 	"username1": TEST_USERNAME2,
 	"username2": TEST_USERNAME
+}
+
+TEST_CONVERSATION3 = {
+	"message": "another message!",
+	"username1": TEST_USERNAME,
+	"username2": TEST_USERNAME3
+}
+
+TEST_CONVERSATION_DELETED = {
+	"message": "This message is removed.",
+	"username1": TEST_USERNAME,
+	"username2": TEST_USERNAME2
+}
+
+TEST_CONVERSATION_BETWEEN = {
+	"username1" : TEST_USERNAME,
+	"username2" : TEST_USERNAME2
 }
 
 # Profile Picture Constants
@@ -144,6 +185,6 @@ TEST_PICTURES = [
 	},
 	{
 		'path': TEST_CONTENT_URL_5,
-		'picture_number': 5 
+		'picture_number': 5
 	}
 ]
