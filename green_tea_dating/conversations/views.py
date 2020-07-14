@@ -1,5 +1,6 @@
 from conversations.models import Conversations
 from conversations.serializers import ConversationsSerializer
+from matches.models import Matches
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from rest_framework import status, permissions, viewsets
 from rest_framework.response import Response
@@ -28,8 +29,13 @@ class ConversationsViewSet(viewsets.ModelViewSet):
 	#get latest messages STILL NEED TO TEST
 	def retrieve(self, request, *args, **kwargs):
 		username1 = request.user
-		conversationMessages = get_list_or_404(Conversations, Q(username1= username1) | Q(username2= username1))
-		serializer = ConversationsSerializer(conversationMessages, many=True)
+		matchedUsers = Matches.objects.filter(Q(matcher=username1))
+		#matchedUsers = get_list_or_404(Matches, Q(matcher=username1))
+		latestMessage = []
+		for instance in matchedUsers:
+			message = Conversations.objects.filter(Q(username1=instance.matcher, username2=instance.matched) | Q(username1=instance.matched, username2=instance.matcher)).latest('time_written')
+			latestMessage += [message]
+		serializer = ConversationsSerializer(latestMessage, many=True)
 		return Response(serializer.data, status=status.HTTP_200_OK)
 
 	#get messages between 2
@@ -39,7 +45,8 @@ class ConversationsViewSet(viewsets.ModelViewSet):
 			return Response(status=status.HTTP_400_BAD_REQUEST)
 		username1 = request.data['username1']
 		username2 = request.data['username2']
-		conversationMessages = get_list_or_404(Conversations, Q(username1=username1, username2=username2) | Q(username1=username2, username2=username1))
+		conversationMessages = Conversations.objects.filter(Q(username1=username1, username2=username2) | Q(username1=username2, username2=username1))
+		#conversationMessages = get_list_or_404(Conversations, Q(username1=username1, username2=username2) | Q(username1=username2, username2=username1))
 		serializer = ConversationsSerializer(conversationMessages, many=True)
 		return Response(serializer.data, status=status.HTTP_200_OK)
 

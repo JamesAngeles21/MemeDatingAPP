@@ -202,3 +202,8 @@ TEST_MATCH_REVERSE = {
 	'matcher' : TEST_USERNAME2,
 	'matched' : TEST_USERNAME
 }
+
+TEST_MATCH_ANOTHER = {
+	'matcher': TEST_USERNAME,
+	'matched': TEST_USERNAME3
+}
