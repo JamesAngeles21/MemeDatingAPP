@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'swipes.apps.SwipesConfig',
     'conversations.apps.ConversationsConfig',
-
+    'potential_matches.apps.PotentialMatchesConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'greenteadating',
         'USER': 'root',
-        'PASSWORD': 'SP@ng3b0b',
+        'PASSWORD': 'stevenkuang1',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }

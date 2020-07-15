@@ -24,6 +24,7 @@ from content.views import ContentViewSet
 from swipes.views import SwipeViewSet
 from conversations.views import ConversationsViewSet
 from matches.views import MatchesViewSet
+from potential_matches.views import PotentialMatchesViewSet
 
 router = routers.DefaultRouter(trailing_slash=True)
 router.register(r'profile', UserProfileViewSet, basename='profile')
@@ -31,6 +32,7 @@ router.register(r'content', ContentViewSet, basename='content')
 router.register(r'swipe', SwipeViewSet, basename='swipe')
 router.register(r'conversations', ConversationsViewSet, basename='conversations')
 router.register(r'matches', MatchesViewSet, basename='matches')
+router.register(r'potential_matches', PotentialMatchesViewSet, basename='potential_matches')
 
 urlpatterns = [
 	path('', include(router.urls)),

@@ -13,12 +13,12 @@ class MatchesViewSet(viewsets.ModelViewSet):
 	permission_classes = (permissions.IsAuthenticated,)
 
 	def create(self, request, *args, **kwargs):
-		serializer= MatchesSerializer(data=request.data)
+		serializer= MatchesSerializer(data={'matcher': request.data['matched'], 'matched': request.data['matcher']})
 		if not serializer.is_valid():
 			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 		serializer.save()
 
-		serializer= MatchesSerializer(data={'matcher': request.data['matched'], 'matched': request.data['matcher']})
+		serializer= MatchesSerializer(data=request.data)
 		if not serializer.is_valid():
 			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 		serializer.save()
