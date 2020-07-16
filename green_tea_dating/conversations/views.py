@@ -28,7 +28,7 @@ class ConversationsViewSet(viewsets.ModelViewSet):
 
 	#get latest messages STILL NEED TO TEST
 	def retrieve(self, request, *args, **kwargs):
-		username1 = request.user.username
+		username1 = request.user
 		matchedUsers = Matches.objects.filter(Q(matcher=username1))
 		#matchedUsers = get_list_or_404(Matches, Q(matcher=username1))
 		latestMessage = []

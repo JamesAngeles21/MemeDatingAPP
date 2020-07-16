@@ -191,6 +191,7 @@ TEST_PICTURES = [
 
 # Matches Test Constants
 MATCHES_BASE_URL = '/matches/'
+MATCHES_USERNAME_URL = MATCHES_BASE_URL + TEST_USERNAME + "/"
 MATCHES_DELETE_URL = MATCHES_BASE_URL + 'delete_match/'
 
 TEST_MATCH = {
@@ -206,4 +207,40 @@ TEST_MATCH_REVERSE = {
 TEST_MATCH_ANOTHER = {
 	'matcher': TEST_USERNAME,
 	'matched': TEST_USERNAME3
+}
+
+# Potential Matches Constants
+POTENTIAL_MATCHES_URL = '/potential_matches/'
+POTENTIAL_MATCHES_USERNAME_URL = POTENTIAL_MATCHES_URL + TEST_USERNAME + "/"
+
+TEST_POTENTIAL_MATCHES = {
+	'potential_matches': [
+		{
+		'potential_matcher': TEST_USERNAME,
+		'potential_matched': TEST_USERNAME2},
+		{
+		'potential_matcher' : TEST_USERNAME,
+		'potential_matched' : TEST_USERNAME3}
+	]
+}
+
+# Swiped Constants
+SWIPED_USERS_URL = '/swiped_users/'
+
+TEST_SWIPED_USERS = {
+	'swiper': TEST_USERNAME,
+	'swiped': TEST_USERNAME2,
+	'liked': True
+}
+
+TEST_SWIPED_USERS2 = {
+	'swiper': TEST_USERNAME2,
+	'swiped': TEST_USERNAME,
+	'liked': True
+}
+
+TEST_SWIPED_USERS3 = {
+	'swiper': TEST_USERNAME2,
+	'swiped': TEST_USERNAME,
+	'liked': False
 }

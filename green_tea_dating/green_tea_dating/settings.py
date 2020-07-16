@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'swipes.apps.SwipesConfig',
     'conversations.apps.ConversationsConfig',
     'potential_matches.apps.PotentialMatchesConfig',
+    'swiped_users.apps.SwipedUsersConfig'
 ]
 
 MIDDLEWARE = [

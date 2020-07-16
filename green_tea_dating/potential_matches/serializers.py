@@ -6,7 +6,7 @@ class PotentialMatchesSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = PotentialMatches
-		fields = ('id', 'potential_matcher', 'potential_matched', 'swipedOn')
+		fields = ('id', 'potential_matcher', 'potential_matched')
 
 	def create(self, validated_data):
 		potential_match = PotentialMatches.objects.create(**validated_data)

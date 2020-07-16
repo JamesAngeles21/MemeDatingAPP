@@ -31,3 +31,22 @@ class MatchesViewSet(viewsets.ModelViewSet):
 		for instance in match:
 			self.perform_destroy(instance)
 		return Response(status=status.HTTP_204_NO_CONTENT)
+
+	def retrieve(self, request, *args, **kwargs):
+		username = request.user
+		matches = Matches.objects.filter(Q(matcher=username))
+		serializer = MatchesSerializer(matches, many=True)
+		return Response(serializer.data, status=status.HTTP_200_OK)
+
+	def create_from_swipe(self, request, *args, **kwargs):
+		serializer= MatchesSerializer(data={'matcher': request['matched'], 'matched': request['matcher']})
+		if not serializer.is_valid():
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		serializer.save()
+
+		serializer= MatchesSerializer(data=request)
+		if not serializer.is_valid():
+			return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+		serializer.save()
+
+		return Response(serializer.data, status=status.HTTP_200_OK)
